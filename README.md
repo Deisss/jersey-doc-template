@@ -11,6 +11,7 @@ way.
 
 
 
+
 Installation
 ------------
 
@@ -21,6 +22,8 @@ The template does work in a pretty simple way. First you need to clone this repo
 We need to get it in recursive mode, because the template use [AppStorm.JS framework](https://github.com/Deisss/AppStorm.JS)
 
 Now you grab a copy of it, we can make it working!
+
+
 
 
 Usage
@@ -38,3 +41,11 @@ __javaDocUrl__ and __jerseyDocUrl__ refer to java documentation and jersey docum
 You probably don't need to change them, as they are pre-configured.
 
 After you did this, it's done, you can use it threw your favorite server, with your favorite browser!
+
+
+
+
+Licence
+-------
+
+This project is licensed under MIT licence.
