@@ -1,0 +1,95 @@
+<div>
+	<h2>General</h2>
+	<br />
+
+	<span>HTTP Verb:</span>		<a>{{api.type}}</a>
+	<br />
+
+	<span>HTTP Path:</span>		<a>{{api.path}}</a>
+	<br />
+
+	<span>Consumes:</span>		<a>{{api.consumeList}}</a>
+	<br />
+
+	<span>Produces:</span>		<a>{{api.produceList}}</a>
+	<br />
+	<br />
+	<br />
+
+
+
+	<h2>State</h2>
+	<br />
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<div class="span5">
+				<span>Deprecated ?</span>
+				<a class="{{deprecated api.deprecated}}">{{booleanToString api.deprecated}}</a>
+			</div>
+			<div class="span1"></div>
+			<div class="span6">
+				<span>Unimplemented ?</span>
+				<a class="{{unimplemented api.unimplemented}}">{{booleanToString api.unimplemented}}</a>
+			</div>
+		</div>
+	</div>
+	<br />
+	<br />
+	<br />
+
+
+
+	<h2>Input(s)/Output</h2>
+	<br />
+	<span>Input:</span>
+	{{#api.inputList}}
+		<div class="input">
+			<h4>{{printDefault name}}</h4>
+			<div class="input">
+
+				<span>Context:</span>			<a href="{{produceDoc context}}" target="_blank">{{context}}</a>
+				<br />
+
+				<span>Type:</span>				<a href="{{produceDoc type}}" target="_blank">{{type}}</a>
+				<br />
+
+				<span>Default value:</span>		<a>{{defaultValue}}</a>
+				<br />
+			</div>
+		</div>
+	{{/api.inputList}}
+	<br />
+	<span>Output:</span>		<a href="{{produceDoc api.output}}" target="_blank">{{api.output}}</a>
+	<br />
+	<br />
+	<br />
+
+
+
+	<h2>Processing</h2>
+	<br />
+	<code>
+	{{#api.nameList}}
+			{{.}} ><br />
+	{{/api.nameList}}
+	</code>
+	<br />
+	<br />
+	<br />
+
+
+
+
+	<h2>Miscellaneous</h2>
+	<br />
+	<span>Author:</span>		<a>{{api.author}}</a>
+	<br />
+	<span>Version:</span>		<a>{{api.version}}</a>
+	<br />
+	<span>Doc (threw the tree):</span>
+	{{#api.docList}}
+		<a>{{.}}</a>
+		<br />
+	{{/api.docList}}
+	<br />
+</div>

@@ -1,0 +1,3 @@
+[submodule "resource/js/vendor/appstorm"]
+	path = resource/js/vendor/appstorm
+	url = https://github.com/Deisss/AppStorm.JS

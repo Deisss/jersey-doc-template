@@ -1,0 +1,14 @@
+{{#content}}
+	<div onclick="loadDetail('{{type}}', '{{path}}');" class="api-line {{toLowerCase type}} {{deprecated deprecated}} {{unimplemented unimplemented}}">
+		<div>
+			<span>{{type}}</span>
+			{{path}}
+			<a href="{{produceDoc output}}" target="_blank">{{output}}</a>
+		</div>
+	</div>
+{{/content}}
+{{^content}}
+	<div class="api-line get text-center">
+		No match found
+	</div>
+{{/content}}

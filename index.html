@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta charset="utf-8" />
+		<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+		<meta http-equiv="Content-Language" content="en" />
+		<!-- Run IE in current version (not compatibility) mode -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+		<!-- Apple iDevice support & Android device -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+		<!-- Content information -->
+		<meta name="description" content="Jersey documentation template" />
+		<meta name="keywords" content="jersey, doc, documentation, jersey-doc, jersey-documentation, jersey-doc-generator, jersey-documentation-generator, jersey-javadoc" />
+		<meta name="robots" content="index, follow, all" />
+		<title>Documentation</title>
+
+		<!-- Bootstrap -->
+		<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+
+		<!-- Font -->
+		<link href='http://fonts.googleapis.com/css?family=Raleway:200' rel='stylesheet' type='text/css'>
+
+		<!-- Style -->
+		<link href="resource/css/main.css" rel="stylesheet">
+	</head>
+
+	<body>
+		<!-- Page content -->
+		<div id="page-container">
+			<div class="container-fluid no-padding">
+				<div id="header" class="row-fluid">
+					<!-- Title -->
+					<div class="span2">
+						<h1>Documentation</h1>
+					</div>
+
+					<!-- Menu -->
+					<div class="span10">
+						<div id="menu">
+							<input type="search" id="search" />
+							<span>Search: </span>
+							<ul id="include-type" class="nav nav-pills">
+								<li class="sort-action" id="include-type-deprecated"><a href="#list">Deprecated</a></li>
+								<li class="sort-action" id="include-type-unimplemented"><a href="#list">Unimplemented</a></li>
+							</ul>
+							<span>Include: </span>
+							<ul id="sort-type" class="nav nav-pills">
+								<li id="sort-by-type"   class="sort-action active"><a href="#list">Type</a></li>
+								<li id="sort-by-path"   class="sort-action active"><a href="#list">Path</a></li>
+								<li id="sort-by-output" class="sort-action"><a href="#list">Output</a></li>
+							</ul>
+							<span>Sort: </span>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+
+			<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="span3" id="rest-detail">
+						<h1>Details</h1>
+						<div id="rest-content">
+							
+						</div>
+					</div>
+					<div class="span9" id="rest-global">
+					
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Footer -->
+		<div id="footer">
+			<div class="container">
+				<p class="muted credit">
+					Generated using
+					<a href="https://github.com/Deisss/jersey-doc-generator" target="_blank">Jersey documentation generator</a>
+					under 
+					<a href="https://github.com/Deisss/jersey-doc-generator/blob/master/LICENSE" target="_blank">MIT Licence</a>.
+				</p>
+			</div>
+		</div>
+
+
+		<!-- Script -->
+
+		<!-- AppStorm.JS -->
+		<script id="a-core" src="resource/js/vendor/appstorm/appstorm/appstorm-handlebars.min.js"></script>
+
+		<!-- Application -->
+		<script src="resource/js/converter.js"></script>
+		<script src="resource/js/prettify.js"></script>
+		<script src="data.js"></script>
+		<script src="resource/js/loader.js"></script>
+		<script src="resource/js/boot.js"></script>
+	</body>
+</html>
