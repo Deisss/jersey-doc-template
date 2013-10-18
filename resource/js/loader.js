@@ -283,26 +283,27 @@ function testRequest() {
 			var text = document.getElementById("text-response");
 
 			// Erase
-			text.value = "";
+			text.innerHTML = "";
 
 			// Put header
-			text.value += request.request.getAllResponseHeaders().toString();
+			text.innerHTML += request.request.getAllResponseHeaders().toString();
 
 			// Escape chars
-			text.value += "\n\n\n";
+			text.innerHTML += "\n\n\n";
 
 			// Body response
-			text.value += result;
+			console.log("done:" + result);
+			text.innerHTML += result;
 		}, function(result) {
 			// we can retrieve all header data from request
 			var text = document.getElementById("text-response");
 
 			// Erase
-			text.value = "";
+			text.innerHTML = "";
 
 			// Put header
 			console.log(request.request.getAllResponseHeaders());
-			text.value += request.request.getAllResponseHeaders().toString();
+			text.innerHTML += request.request.getAllResponseHeaders().toString();
 		});
 
 	// Starting request
