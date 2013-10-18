@@ -278,32 +278,48 @@ function testRequest() {
 
 	// Preparing request for sending
 	var request = new a.ajax(options,
-		function(result) {
+		// success function
+		function(result, statusCode) {
 			// we can retrieve all header data from request
-			var text = document.getElementById("text-response");
+			var body   = document.getElementById("text-response-body"),
+				status = document.getElementById("text-response-status"),
+				header = document.getElementById("text-response-header");
 
 			// Erase
-			text.innerHTML = "";
+			body.innerHTML   = "";
+			header.innerHTML = "";
+
+			// HTTP Status code
+			status.value = statusCode;
 
 			// Put header
-			text.innerHTML += request.request.getAllResponseHeaders().toString();
-
-			// Escape chars
-			text.innerHTML += "\n\n\n";
+			header.innerHTML += request.request.getAllResponseHeaders().toString();
 
 			// Body response
-			console.log("done:" + result);
-			text.innerHTML += result;
-		}, function(result) {
+			body.innerHTML   += result;
+
+			// Show results
+			changeTestTab("response");
+
+		// error function
+		}, function(statusCode) {
 			// we can retrieve all header data from request
-			var text = document.getElementById("text-response");
+			var body   = document.getElementById("text-response-body"),
+				status = document.getElementById("text-response-status"),
+				header = document.getElementById("text-response-header");
 
 			// Erase
-			text.innerHTML = "";
+			body.innerHTML   = "";
+			header.innerHTML = "";
+
+			// HTTP Status code
+			status.value = statusCode;
 
 			// Put header
-			console.log(request.request.getAllResponseHeaders());
-			text.innerHTML += request.request.getAllResponseHeaders().toString();
+			header.innerHTML += request.request.getAllResponseHeaders().toString();
+
+			// Show results
+			changeTestTab("response");
 		});
 
 	// Starting request

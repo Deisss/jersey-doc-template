@@ -92,7 +92,7 @@ h1{color:#E67E22;font-family:'Raleway',Arial,sans-serif;font-size:2.75em;font-we
 
 /* content */
 #rest-test #content-response textarea, #rest-test #content-request textarea{min-width:100%;width:100%;max-width:100%;min-height:250px;height:250px}
-#rest-test #test-request label{display:inline-block;width:300px}
+#rest-test #test-request label, #rest-test #content-response label{display:inline-block;width:300px}
 
 
 /*

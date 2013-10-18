@@ -68,7 +68,7 @@
 						<div class="row-fluid">
 							<!-- PATH PARAMS -->
 							<div class="span6">
-								<h5>PathParams</h5>
+								<h5 class="muted">PathParams</h5>
 								<!-- variable list -->
 								{{#content.inputList}}
 									<!-- --noname-- tags are in fact body content -->
@@ -89,7 +89,7 @@
 
 							<!-- QUERY PARAMS -->
 							<div class="span6">
-								<h5>QueryParams <small><a>+ one</a></small></h5>
+								<h5 class="muted">QueryParams <small><a>+ one</a></small></h5>
 							</div>
 
 						</div>
@@ -110,9 +110,30 @@
 
 			<!-- response tab -->
 			<div id="content-response">
-				<h5 class="muted">Response from server</h5>
-				<br />
-				<textarea id="text-response" class="yellow"></textarea>
+				<h4 class="muted">Response from server</h4>
+
+				<fieldset>
+					<!-- TODO: sur ce champ, il faut un id unique + avoir de quoi chopper la regex qui va avec -->
+					<!-- TODO: ce qui n'a pas de nom --noname-- doit être retiré... -->
+					<label for="text-response-status">HTTP status</label>
+					<input type="text" id="text-response-status" class="yellow" />
+				</fieldset>
+
+
+				<div class="container-fluid">
+					<div class="row-fluid">
+						<div class="span6">
+							<h5 class="muted">Response header</h5>
+							<br />
+							<textarea id="text-response-header" class="yellow"></textarea>
+						</div>
+						<div class="span6">
+							<h5 class="muted">Response body</h5>
+							<br />
+							<textarea id="text-response-body" class="yellow"></textarea>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
