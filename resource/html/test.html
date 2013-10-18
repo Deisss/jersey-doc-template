@@ -1,0 +1,119 @@
+<div class="span3 columns" id="rest-detail">
+	<h1>Details</h1>
+	<div id="rest-content">
+	</div>
+</div>
+<div class="span9 columns" id="rest-test">
+	<h1>{{content.type}} on {{content.path}}</h1>
+
+	<div class="tab">
+		<ul class="menu">
+			<li id="menu-request" class="active">
+				<a onclick="changeTestTab('request')" class="yellow">Request</a>
+			</li>
+			<li id="menu-response">
+				<a onclick="changeTestTab('response')" class="yellow">Response</a>
+			</li>
+		</ul>
+		<div class="content">
+			<!-- request tab -->
+			<div id="content-request" class="active">
+				<small class="muted">You need to get <a href="http://simplapi.wordpress.com/2013/04/10/jersey-jax-rs-implements-a-cross-domain-filter/" target="_blank">C.O.R.S.</a> activated on your server side for using this functionality.</small>
+				<br />
+				<br />
+
+				<form id="test-request" onsubmit="testRequest();return false;">
+
+					<!-- Some hidden usefull data -->
+					<input type="hidden" id="content-method" value="{{content.type}}" />
+					<input type="hidden" id="content-path" value="{{content.path}}" />
+
+					<h4 class="muted">Prepare your request <small><a>+ header</a></small></h4>
+					<!-- server url -->
+					<div class="container-fluid">
+						<div class="row-fluid">
+							<div class="span6">
+								<!-- server url -->
+								<fieldset>
+									<label for="url-server">Server url:</label>
+									<input type="url" name="url-server" id="url-server" class="yellow" placeholder="server url" />
+								</fieldset>
+
+								<!-- http auth -->
+								<fieldset>
+									<label for="basic-auth">HTTP Basic Auth:</label>
+									<input type="text" class="yellow" name="basic-auth" id="basic-auth" placeholder="enter 'login:password'" />
+								</fieldset>
+							</div>
+
+							<div class="span6">
+								<!-- Content-Type -->
+								<fieldset>
+									<label for="content-type">Content-Type:</label>
+									<input type="text" name="content-type" id="content-type" class="yellow" value="application/json" placeholder="Content-Type" />
+								</fieldset>
+
+								<!-- Accept -->
+								<fieldset>
+									<label for="accept">Accept:</label>
+									<input type="text" name="accept" id="accept" class="yellow" value="application/json" placeholder="Accept" />
+								</fieldset>
+							</div>
+						</div>
+					</div>
+
+
+					<h4 class="muted">Prepare your data</h4>
+					<div class="container-fluid">
+						<div class="row-fluid">
+							<!-- PATH PARAMS -->
+							<div class="span6">
+								<h5>PathParams</h5>
+								<!-- variable list -->
+								{{#content.inputList}}
+									<!-- --noname-- tags are in fact body content -->
+									{{#ifCond name ""}}
+									{{else}}
+										<fieldset>
+											<!-- TODO: sur ce champ, il faut un id unique + avoir de quoi chopper la regex qui va avec -->
+											<!-- TODO: ce qui n'a pas de nom --noname-- doit être retiré... -->
+											<label>{{printDefault name}}</label>
+											<input type="text" value="{{defaultValue}}" class="yellow" />
+										</fieldset>
+									{{/ifCond}}
+								{{/content.inputList}}
+								{{^content.inputList}}
+									<small class="muted">Nothing to prepare</small>
+								{{/content.inputList}}
+							</div>
+
+							<!-- QUERY PARAMS -->
+							<div class="span6">
+								<h5>QueryParams <small><a>+ one</a></small></h5>
+							</div>
+
+						</div>
+					</div>
+
+
+					<!-- for both PUT and POST, we allow raw body element -->
+					<h4 class="muted">Body content</h4>
+					<textarea id="text-request-body" class="yellow"></textarea>
+
+					<br />
+					<br />
+
+					<!-- Sending -->
+					<input type="submit" class="btn btn-large btn-warning pull-right" value="Send request" />
+				</form>
+			</div>
+
+			<!-- response tab -->
+			<div id="content-response">
+				<h5 class="muted">Response from server</h5>
+				<br />
+				<textarea id="text-response" class="yellow"></textarea>
+			</div>
+		</div>
+	</div>
+</div>

@@ -142,6 +142,18 @@ Handlebars.registerHelper("toLowerCase", function(object) {
 		return object;
 	}
 });
+Handlebars.registerHelper("ifCond", function(v1, v2, options) {
+	if(v1 === v2) {
+		return options.fn(this);
+	}
+	return options.inverse(this);
+});
+Handlebars.registerHelper("safeUrl", function(object) {
+	if(a.isString(object)) {
+		return object.replace(/\\/g, "-").replace(/\//g, "-");
+	}
+	return object;
+});
 Handlebars.registerHelper("printDefault", function(object) {
 	if(a.isNull(object) || !a.isString(object) || object.length === 0) {
 		return new Handlebars.SafeString("--noname--");

@@ -17,17 +17,20 @@ h1{color:#E67E22;font-family:'Raleway',Arial,sans-serif;font-size:2.75em;font-we
 #header .nav-pills{margin-top:12px;margin-bottom:0px}
 #header span{line-height:60px;color:#34495E;font-weight:bold;font-family:'Raleway',Arial,sans-serif;}
 #header .nav-pills li a{color:#E67E22}
+#header a{color:#E67E22}
 #header .nav-pills li.active a{background-color:#E67E22;color:white}
 
-#header #menu > span, #header #menu > ul, #header #menu > input{float:right}
-#header #menu > span:after, #header #menu > ul:after, #header #menu > input:after{clear:both}
+#header .menu > span, #header .menu > ul, #header .menu > input{float:right}
+#header .menu > span:after, #header .menu > ul:after, #header .menu > input:after{clear:both}
 
-#header #menu > span{margin-right:8px}
-#header #menu > ul, #header #menu > input{margin-right:50px}
+#header .menu > span{margin-right:8px}
+#header .menu > ul, #header .menu > input{margin-right:50px}
 
-#header #menu > input{margin-top:14px}
+#header .menu > input{margin-top:14px}
 
-#search:focus{
+#header #menu-test{text-align:right;padding-top:20px;padding-right:50px}
+
+#search:focus, input.yellow:focus, textarea.yellow:focus{
 	border-color:rgba(230, 126, 34, 0.8);
 	-moz-box-shadow: 1px 0px 8px 0px rgba(230, 126, 34, 0.6);
 	-webkit-box-shadow: 1px 0px 8px 0px rgba(230, 126, 34, 0.6);
@@ -46,7 +49,7 @@ h1{color:#E67E22;font-family:'Raleway',Arial,sans-serif;font-size:2.75em;font-we
 
 /*
 ---------------
-  GLOBAL
+  LIST
 ---------------
 */
 #rest-global{border-top:1px solid #30928d;}
@@ -73,6 +76,24 @@ h1{color:#E67E22;font-family:'Raleway',Arial,sans-serif;font-size:2.75em;font-we
 /* Deprecated check */
 #rest-global .deprecated, #rest-global .unimplemented{border:1px solid #AAA;background-color:#CCC}
 
+/*
+---------------
+  TEST
+---------------
+*/
+/* tab */
+#rest-test .tab ul{margin:50px 13px 13px 30px;background:white}
+#rest-test .tab ul.menu li{display:inline;padding:15px 0px}
+#rest-test .tab ul.menu li a{display:inline-block;cursor:pointer;padding:0px 20px;color:#34495E}
+#rest-test .tab ul.menu li.active{border:1px solid #E67E22;background:white;border-bottom:1px solid white}
+#rest-test .content{border-top:1px solid #E67E22}
+#rest-test .content > div{padding:20px;display:none}
+#rest-test .content > div.active{display:block}
+
+/* content */
+#rest-test #content-response textarea, #rest-test #content-request textarea{min-width:100%;width:100%;max-width:100%;min-height:250px;height:250px}
+#rest-test #test-request label{display:inline-block;width:300px}
+
 
 /*
 ---------------
@@ -96,3 +117,4 @@ h1{color:#E67E22;font-family:'Raleway',Arial,sans-serif;font-size:2.75em;font-we
 
 #rest-content code{display:block}
 #rest-content .input{margin-left:25px}
+

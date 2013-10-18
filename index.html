@@ -38,7 +38,7 @@
 
 					<!-- Menu -->
 					<div class="span10">
-						<div id="menu">
+						<div id="menu-list" class="menu">
 							<input type="search" id="search" />
 							<span>Search: </span>
 							<ul id="include-type" class="nav nav-pills">
@@ -53,22 +53,16 @@
 							</ul>
 							<span>Sort: </span>
 						</div>
+						<div id="menu-test" class="menu">
+							<a href="#list">Go back to list</a>
+						</div>
 					</div>
 				</div>
 				
 			</div>
 
 			<div class="container-fluid">
-				<div class="row-fluid">
-					<div class="span3" id="rest-detail">
-						<h1>Details</h1>
-						<div id="rest-content">
-							
-						</div>
-					</div>
-					<div class="span9" id="rest-global">
-					
-					</div>
+				<div class="row-fluid" id="page-content">
 				</div>
 			</div>
 		</div>
@@ -87,9 +81,11 @@
 
 
 		<!-- Script -->
+		<!-- other -->
+		<script src="resource/js/vendor/base64.min.js"></script>
 
 		<!-- AppStorm.JS -->
-		<script id="a-core" src="resource/js/vendor/appstorm/appstorm/appstorm-handlebars.min.js"></script>
+		<script id="a-core" src="resource/js/vendor/appstorm-handlebars.min.js"></script>
 
 		<!-- Application -->
 		<script src="resource/js/converter.js"></script>

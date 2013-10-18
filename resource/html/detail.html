@@ -1,7 +1,6 @@
 <div>
 	<h2>General</h2>
 	<br />
-
 	<span>HTTP Verb:</span>		<a>{{api.type}}</a>
 	<br />
 
@@ -12,6 +11,13 @@
 	<br />
 
 	<span>Produces:</span>		<a>{{api.produceList}}</a>
+	<br />
+
+	{{#if gotry}}
+		<br />
+		<a class="btn btn-info" href="#test/{{api.type}}/{{safeUrl api.path}}">Try it</a>
+	{{/if}}
+
 	<br />
 	<br />
 	<br />
@@ -41,7 +47,7 @@
 
 	<h2>Input(s)/Output</h2>
 	<br />
-	<span>Input:</span>
+	<h3>Input:</h3>
 	{{#api.inputList}}
 		<div class="input">
 			<h4>{{printDefault name}}</h4>
@@ -59,7 +65,7 @@
 		</div>
 	{{/api.inputList}}
 	<br />
-	<span>Output:</span>		<a href="{{produceDoc api.output}}" target="_blank">{{api.output}}</a>
+	<h3>Output:</h3>		<a href="{{produceDoc api.output}}" target="_blank">{{api.output}}</a>
 	<br />
 	<br />
 	<br />
