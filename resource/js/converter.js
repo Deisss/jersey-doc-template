@@ -4,11 +4,11 @@
  * @param data {String} The data to replace
 */
 function convertType(data) {
-	if(a.isString(data)) {
-		return data.replace("javax.ws.rs.", "");
-	} else {
-		return data;
-	}
+    if(a.isString(data)) {
+        return data.replace("javax.ws.rs.", "");
+    } else {
+        return data;
+    }
 };
 
 
@@ -19,12 +19,12 @@ function convertType(data) {
  * @param b {String} The second string
 */
 function __sortString(a,b) {
-	if(a < b) {
-		return -1;
-	} else if(a > b) {
-		return 1;
-	}
-	return 0;
+    if(a < b) {
+        return -1;
+    } else if(a > b) {
+        return 1;
+    }
+    return 0;
 };
 
 
@@ -34,25 +34,25 @@ function __sortString(a,b) {
  * @param data {Array} The array to sort
 */
 function sortByType(data) {
-	if(a.isArray(data)) {
-		return data.sort(function(a,b) {
-			var typeA = a.type.toLowerCase(),
-				typeB = b.type.toLowerCase();
+    if(a.isArray(data)) {
+        return data.sort(function(a,b) {
+            var typeA = a.type.toLowerCase(),
+                typeB = b.type.toLowerCase();
 
-			// Change delete string to appear on bottom (place "z" at beginning)
-			if(typeA === "delete") {	typeA = "zdelete";	}
-			if(typeB === "delete") {	typeB = "zdelete";	}
+            // Change delete string to appear on bottom (place "z" at beginning)
+            if(typeA === "delete") {    typeA = "zdelete";  }
+            if(typeB === "delete") {    typeB = "zdelete";  }
 
-			// Same with head and options (place at first)
-			if(typeA === "head") {	typeA = "zhead";	}
-			if(typeB === "head") {	typeB = "zhead";	}
-			if(typeA === "options") {	typeA = "zoptions";	}
-			if(typeB === "options") {	typeB = "zoptions";	}
+            // Same with head and options (place at first)
+            if(typeA === "head") {  typeA = "zhead";    }
+            if(typeB === "head") {  typeB = "zhead";    }
+            if(typeA === "options") {   typeA = "zoptions"; }
+            if(typeB === "options") {   typeB = "zoptions"; }
 
-			return __sortString(typeA, typeB);
-		});
-	}
-	return data;
+            return __sortString(typeA, typeB);
+        });
+    }
+    return data;
 };
 
 /**
@@ -61,15 +61,15 @@ function sortByType(data) {
  * @param data {Array} The array to sort
 */
 function sortByPath(data) {
-	if(a.isArray(data)) {
-		return data.sort(function(a,b) {
-			var typeA = a.path.toLowerCase(),
-				typeB = b.path.toLowerCase();
+    if(a.isArray(data)) {
+        return data.sort(function(a,b) {
+            var typeA = a.path.toLowerCase(),
+                typeB = b.path.toLowerCase();
 
-			return __sortString(typeA, typeB);
-		});
-	}
-	return data;
+            return __sortString(typeA, typeB);
+        });
+    }
+    return data;
 };
 
 /**
@@ -78,13 +78,13 @@ function sortByPath(data) {
  * @param data {Array} The array to sort
 */
 function sortByOutput(data) {
-	if(a.isArray(data)) {
-		return data.sort(function(a,b) {
-			var typeA = a.output.toLowerCase(),
-				typeB = b.output.toLowerCase();
+    if(a.isArray(data)) {
+        return data.sort(function(a,b) {
+            var typeA = a.output.toLowerCase(),
+                typeB = b.output.toLowerCase();
 
-			return __sortString(typeA, typeB);
-		});
-	}
-	return data;
+            return __sortString(typeA, typeB);
+        });
+    }
+    return data;
 };

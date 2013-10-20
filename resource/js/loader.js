@@ -49,19 +49,19 @@
 					// Sorting final result
 					data.content = a.clone(arr);
 
-					if(hasClass("sort-by-output", "active")) {
+					if(a.dom.id("sort-by-output").hasClass("active")) {
 						data.content = sortByOutput(data.content);
 					}
-					if(hasClass("sort-by-path", "active")) {
+					if(a.dom.id("sort-by-path").hasClass("active")) {
 						data.content = sortByPath(data.content);
 					}
-					if(hasClass("sort-by-type", "active")) {
+					if(a.dom.id("sort-by-type").hasClass("active")) {
 						data.content = sortByType(data.content);
 					}
 
 					// Filtering deprecated & unimplemented & search
-					var deprecated    = !hasClass("include-type-deprecated", "active"),
-						unimplemented = !hasClass("include-type-unimplemented", "active"),
+					var deprecated    = !a.dom.id("include-type-deprecated").hasClass("active"),
+						unimplemented = !a.dom.id("include-type-unimplemented").hasClass("active"),
 						boolSearch    = false;
 						search        = a.storage.memory.getItem("search");
 
@@ -208,20 +208,10 @@ function loadDetail(type, path) {
  * @param current {String} The tab name to activate
 */
 function changeTestTab(current) {
-	var opposite = "";
-	if(current === "response") {
-		opposite = "request";
-	} else {
-		opposite = "response";
-	}
+	var opposite = (current === 'response') ? 'request' : 'response';
 
-	// Content
-	addClass(document.getElementById("content-" + current), "active");
-	removeClass(document.getElementById("content-" + opposite), "active");
-
-	// Menu
-	addClass(document.getElementById("menu-" + current), "active");
-	removeClass(document.getElementById("menu-" + opposite), "active");
+	a.dom.id('content-' + current  + ', menu-' + current ).addClass('active');
+	a.dom.id('content-' + opposite + ', menu-' + opposite).removeClass('active');
 };
 
 
