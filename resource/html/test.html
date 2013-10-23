@@ -28,7 +28,23 @@
 					<input type="hidden" id="content-method" value="{{content.type}}" />
 					<input type="hidden" id="content-path" value="{{content.path}}" />
 
-					<h4 class="muted">Prepare your request <small><a>+ header</a></small></h4>
+					<h4 class="muted">Prepare your request <small><a onclick="addTestHeader()">+ header</a></small></h4>
+
+					<!--<div class="container-fluid">
+						<div class="row-fluid">
+							<div class="span12">
+								<label class="radio">
+									<input type="radio" name="use-proxy" value="false" id="use-proxy-false" checked />
+									Direct send
+								</label>
+								<label class="radio">
+									<input type="radio" name="use-proxy" value="true" id="use-proxy-true" />
+									Use PHP Proxy
+								</label>
+							</div>
+						</div>
+					</div>-->
+
 					<!-- server url -->
 					<div class="container-fluid">
 						<div class="row-fluid">
@@ -62,6 +78,14 @@
 						</div>
 					</div>
 
+					<div>
+						<div class="container-fluid">
+							<div id="additional-header" class="row-fluid">
+
+							</div>
+						</div>
+					</div>
+
 
 					<h4 class="muted">Prepare your data</h4>
 					<div class="container-fluid">
@@ -89,11 +113,19 @@
 
 							<!-- QUERY PARAMS -->
 							<div class="span6">
-								<h5 class="muted">QueryParams <small><a>+ one</a></small></h5>
-							</div>
+								<h5 class="muted">QueryParams <small><a onclick="addTestQueryParam()">+ one</a></small></h5>
+								<div class="container-fluid">
+									<div id="additional-query-parameter" class="row-fluid">
 
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
+
+
+
+		
 
 
 					<!-- for both PUT and POST, we allow raw body element -->
@@ -136,5 +168,34 @@
 				</div>
 			</div>
 		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<!-- Create a new parameter template -->
+<div id="tmpl_test_parameter" class="tmpl">
+	<div class="span12">
+		<fieldset>
+			<input type="text" placeholder="Param key" class="parameter-key yellow" value="{{key}}" />
+			<input type="text" placeholder="Param value" class="parameter-value yellow" value="{{value}}" />
+		</fieldset>
+	</div>
+</div>
+
+<!-- Create a new header template -->
+<div id="tmpl_test_header" class="tmpl">
+	<div class="span6">
+		<fieldset>
+			<input type="text" placeholder="Header key" class="header-key yellow" value="{{key}}" />
+			<input type="text" placeholder="Header value" class="header-value yellow" value="{{value}}" />
+		</fieldset>
 	</div>
 </div>

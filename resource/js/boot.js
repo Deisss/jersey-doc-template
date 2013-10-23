@@ -11,7 +11,8 @@
                 return oldErrorHandler(message, url, line);
             }
 
-            alert("DEBUG MODE, an error occurs\n Message: " + message + "\n url:" + url + "\n line:" + line);
+            alert("DEBUG MODE, an error occurs\n Message: " + 
+                        message + "\n url:" + url + "\n line:" + line);
             return false;
         };
     }
@@ -28,16 +29,16 @@
 (function() {
     // Bind element to respond on click to change class
     a.dom.cls('sort-action').tag("a").bind('click', function() {
-        var el = new a.dom.children(this);
+        var el = a.dom.el(this);
         el.parent().toggleClass('active');
         a.state.forceReloadById("list");
     });
 }());
 
-document.getElementById("search").onkeyup = function() {
+a.dom.id("search").bind("keyup", function() {
     a.storage.memory.setItem("search", this.value);
     a.state.forceReloadById("list");
-};
+});
 
 /*
 ------------------------
@@ -163,11 +164,18 @@ Handlebars.registerHelper("debug", function(object) {
     };
 
     // The main starter is here, we will customize it soon
-    if(currentHash === null || currentHash === "" || !a.state.hashExists(currentHash)) {
+    if(
+            currentHash === null
+        ||  currentHash === ""
+        ||  !a.state.hashExists(currentHash)
+    ) {
         currentHash = "list";
     }
 
-    // Some browser don't get hash change with onHashchange event, so we decide to use timer
-    // Note : a.page.event.hash is more complex, here is little example
+    /*
+     * Some browser don't get hash change with onHashchange event,
+     * so we decide to use timer.
+     * Note : a.page.event.hash is more complex, here is little example
+    */
     timerId = a.timer.add(firstHandle, null, 10);
 })();

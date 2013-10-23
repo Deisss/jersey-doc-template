@@ -60,8 +60,10 @@
 					}
 
 					// Filtering deprecated & unimplemented & search
-					var deprecated    = !a.dom.id("include-type-deprecated").hasClass("active"),
-						unimplemented = !a.dom.id("include-type-unimplemented").hasClass("active"),
+					var deprecated    = !a.dom.id("include-type-deprecated")
+														.hasClass("active"),
+						unimplemented = !a.dom.id("include-type-unimplemented")
+														.hasClass("active"),
 						boolSearch    = false;
 						search        = a.storage.memory.getItem("search");
 
@@ -98,8 +100,8 @@
 					a.storage.memory.setItem("content", data.content);
 				},
 				preLoad : function(result) {
-					document.getElementById("menu-test").style.display="none";
-					document.getElementById("menu-list").style.display="block";
+					a.dom.id('menu-test').css('display', 'none');
+					a.dom.id('menu-list').css('display', 'block');
 					a.storage.memory.setItem("gotry", true);
 					result.done();
 				}
@@ -144,8 +146,8 @@
 					}
 				},
 				preLoad : function(result) {
-					document.getElementById("menu-list").style.display="none";
-					document.getElementById("menu-test").style.display="block";
+					a.dom.id('menu-list').css('display', 'none');
+					a.dom.id('menu-test').css('display', 'block');
 					result.done();
 				},
 				postLoad : function(result) {
@@ -214,6 +216,63 @@ function changeTestTab(current) {
 	a.dom.id('content-' + opposite + ', menu-' + opposite).removeClass('active');
 };
 
+/**
+ * get the "raw" header add, and append it to dom
+*/
+function addTestHeader() {
+	a.page.template.get("tmpl_test_header", null, function(content) {
+		a.page.template.append(
+			document.getElementById("additional-header"),
+			content
+		);
+
+		// We create a new "additional-header" if needed
+		var id = "additional-header";
+		var span = a.dom.id(id).cls("span6").getElements();
+		if(span.length >= 2) {
+			var container = document.createElement("div");
+			container.className = "container-fluid";
+
+			var row = document.createElement("div");
+			row.className = "row-fluid";
+			row.id = id;
+
+			container.appendChild(row);
+
+			// We get id, remove it, and create to parent a new element with
+			// this id, to always have no trouble with row-fluid system
+			a.dom.id(id).attribute("id", null).parent().parent().append(container);
+		}
+	});
+};
+
+function addTestQueryParam() {
+	a.page.template.get("tmpl_test_parameter", null, function(content) {
+		a.page.template.append(
+			document.getElementById("additional-query-parameter"),
+			content
+		);
+
+		// We create a new "additional-header" if needed
+		var id = "additional-query-parameter";
+		var span = a.dom.id(id).cls("span12").getElements();
+		if(span.length >= 1) {
+			var container = document.createElement("div");
+			container.className = "container-fluid";
+
+			var row = document.createElement("div");
+			row.className = "row-fluid";
+			row.id = id;
+
+			container.appendChild(row);
+
+			// We get id, remove it, and create to parent a new element with
+			// this id, to always have no trouble with row-fluid system
+			a.dom.id(id).attribute("id", null).parent().parent().append(container);
+		}
+	});
+};
+
 
 /**
  * Perform a test on given parameters
@@ -240,6 +299,29 @@ function testRequest() {
 	// TODO: the good things is that URL is close to be OK for appstorm too from state... deal with it
 	var parsedUrl = preparedUrl;
 
+	// Manage extra parameter data
+	var parameterKeyList   = a.dom.cls("parameter-key").getElements(),
+		parameterValueList = a.dom.cls("parameter-value").getElements();
+
+	var parameterResult = [];
+	for(var i=0, l=parameterKeyList.length; i<l; ++i) {
+		var key = parameterKeyList[i].value,
+			val = parameterValueList[i].value;
+
+		if(!a.isNull(key) && a.isString(key) && key.length > 0) {
+			parameterResult.push(
+				  encodeURIComponent(key)
+				+ "="
+				+ encodeURIComponent(val)
+			);
+		}
+	}
+
+	// User gives some custom parameters
+	if(parameterResult.length > 0) {
+		parsedUrl += "?" + parameterResult.join("&");
+	}
+
 	// Building basic Ajax request options
 	var options = {
 		url:     parsedUrl,
@@ -265,6 +347,23 @@ function testRequest() {
 	if(form["basic-auth"]) {
 		options.header["authorization"] = "Basic " + Base64.encode(form["basic-auth"]);
 	}
+
+	// We grab custom data from user
+	var headerKeyList      = a.dom.cls("header-key").getElements(),
+		headerValueList    = a.dom.cls("header-value").getElements();
+
+	for(var i=0, l=headerKeyList.length; i<l; ++i) {
+		var key = headerKeyList[i].value || "",
+			val = headerValueList[i].value || "";
+
+		if(
+			!a.isNull(key) && a.isString(key) && key.length > 0
+			&& !a.isNull(val)
+		) {
+			options.header[key] = val;
+		}
+	}
+
 
 	// Preparing request for sending
 	var request = new a.ajax(options,
